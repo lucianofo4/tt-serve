@@ -1,0 +1,210 @@
+% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/hoursCalc/cssindex/style.css">
+    <link rel="icon" href="static\hoursCalc\imagesindex\bus.png" type="image/png" sizes="16x16">
+    <meta name="theme-color" content="#343A40" />
+
+    {% if title %}
+    <title> {{ title }} </title>
+    {% else %}
+    <title> IF∫BUS </title>
+    {% endif %}
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top"><a class="nav-link navbar-brand" href="/"><img
+                src="\static\hoursCalc\imagesindex\bus.png" style="height:1em;"><span class="ml-2"><a
+                    class="navbar-brand mr-4" href="{% url 'initial_page' %}">IF∫Bus</a>
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                        aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarToggle">
+                        <div class="navbar-nav mr-auto">
+
+                            <a class="nav-item nav-link" href="{% url 'index' %}">Turnos</a>
+                            <a class="nav-item nav-link" href="{% url 'select' %}"> Datas</a>
+                            <a class="nav-item nav-link" href="{% url 'blog-home' %}"> Quadro de notícias</a>
+
+
+                            <a class="nav-item nav-link" href="{% url 'todo_list' %}"> Rotas</a>
+
+
+
+                        </div>
+                        <!-- Navbar Right Side -->
+                        <div class="navbar-nav">
+                            {% if user.is_authenticated %}
+                            <a class="nav-item nav-link" href="{% url 'post_create' %}">Nova postagem</a>
+                            <a class="nav-item nav-link" href="{% url 'profile' %}">Perfil</a>
+                            <a class="nav-item nav-link" href="{% url 'logout' %}">Sair</a>
+                            {% else %}
+                            <a class="nav-item nav-link" href="{% url 'login' %}">Conecte-se Admin</a>
+                            <a class="nav-item nav-link" href="{% url 'register' %}">Registre-se Admin</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+    </nav>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+    <!--Footer-->
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Serviços</h3>
+                        <ul>
+                            <li><a href="#">Quadro de Noticias</a></li>
+                            <li><a href="#">Turnos e Horarios</a></li>
+                            <li><a href="#">Rotas e Mapas</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Sobre</h3>
+                        <ul>
+                            <li><a href="#">Projeto</a></li>
+                            <li><a href="#">Time</a></li>
+                            <li><a href="#">Apoiadores</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>IF_BUS</h3>
+                        <p>Sistema responsável por gerenciar as viagens dos alunos ao IF Campus Guanambi.</p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
+                                class="icon ion-social-twitter"></i></a><a href="#"><i
+                                class="icon ion-social-snapchat"></i></a><a href="#"><i
+                                class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Copyright IF_BUS © 2022</p>
+            </div>
+        </footer>
+    </div>
+    </footer>
+
+    <style>
+        .footer-dark {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            padding: 50px 0;
+            color: #f0f9ff;
+            background-color: #282d32;
+        }
+
+        .footer-dark h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .footer-dark ul {
+            padding: 0;
+            list-style: none;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .footer-dark ul a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.6;
+        }
+
+        .footer-dark ul a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width:767px) {
+            .footer-dark .item:not(.social) {
+                text-align: center;
+                padding-bottom: 20px;
+            }
+        }
+
+        .footer-dark .item.text {
+            margin-bottom: 36px;
+        }
+
+        @media (max-width:767px) {
+            .footer-dark .item.text {
+                margin-bottom: 0;
+            }
+        }
+
+        .footer-dark .item.text p {
+            opacity: 0.6;
+            margin-bottom: 0;
+        }
+
+        .footer-dark .item.social {
+            text-align: center;
+        }
+
+        @media (max-width:991px) {
+            .footer-dark .item.social {
+                text-align: center;
+                margin-top: 20px;
+            }
+        }
+
+        .footer-dark .item.social>a {
+            font-size: 20px;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+            margin: 0 8px;
+            color: #fff;
+            opacity: 0.75;
+        }
+
+        .footer-dark .item.social>a:hover {
+            opacity: 0.9;
+        }
+
+        .footer-dark .copyright {
+            text-align: center;
+            padding-top: 24px;
+            opacity: 0.3;
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+    </style>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

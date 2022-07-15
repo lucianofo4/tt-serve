@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<h1>Detalhe do turno</h1>
+
+<h5>{{ shift.name }}</h5>
+<h5>Data: {{ shift.date|date:"d/m/y" }}</h5>
+<h5>inicio: {{ shift.clock_in|date:"H:i" }} - parada: {{ shift.clock_out|date:"H:i"}}</h5>
+<h5>descrição: {{shift.description}}</h5>
+
+{% endblock content %}

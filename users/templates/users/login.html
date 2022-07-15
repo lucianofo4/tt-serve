@@ -1,0 +1,38 @@
+{% extends 'hoursCalc/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+</head>
+
+<body>
+  <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="container">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend>Conecte-se</legend>
+        {{ form|crispy }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Conecte-se</button>
+      </div>
+    </form>
+    <div>
+      <small class="text-muted">
+        Precisa de uma conta? <a class="ml-2" href="{% url 'register' %}">Inscreva-se agora</a>
+      </small>
+    </div>
+  </div>
+
+  {% endblock content %}

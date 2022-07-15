@@ -1,0 +1,16 @@
+{% extends 'hoursCalc/base.html' %}
+
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <fieldset class="form-group">
+    <legend class="border-botton mb-4 ">Apague a postagem</legend>
+    <h2>Tem certeza de que deseja excluir a postagem "{{ object.title }}" ? </h2>
+  </fieldset>
+  <hr>
+  <div class="form-group">
+    <button class="btn btn-outline-danger" type="submit">Sim, Excluir</button>
+    <a class="btn btn-outline-secondary" href="{% url 'post_detail' object.id %}">Cancelar</a>
+  </div>
+</form>
+{% endblock content %}

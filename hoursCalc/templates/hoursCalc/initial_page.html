@@ -1,0 +1,54 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<div class="my-5"></div>
+<header class="masthead">
+    <div class="container h-100" src="static\hoursCalc\imagesindex\masthead-bg.jpeg.svg">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center text-white">
+                <h1>IF∫Bus</h1>
+                <p class="lead">Destino único para sua viagem de ônibus</p>
+                <div>
+                    <a class="btn btn-primary mx-2 my-2" href="{% url 'index' %}">Turnos</a>
+                    <a class="btn btn-light mx-2 my-2" href="{% url 'select' %}"> Filtros de viagem</a>
+                    <a class="btn btn-light mx-2 my-2" href="{% url 'blog-home' %}"> Quadro de notícias</a>
+                    <a class="btn btn-light mx-2 my-2" href="{% url 'todo_list' %}"> Rotas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2 class="text-center">Adicione Turnos</h2><img class="landing-icon d-block mx-auto my-4"
+                src="\static\hoursCalc\imagesindex\directions.svg">
+            <p class="h-25">
+                Com um clique, você pode adicionar um turno a sua viagem em nosso site.
+                Isso economizará tempo e aborrecimentos no ônibus para que você possa aproveitar seu passeio.
+            
+        </div>
+
+        <div class="col-sm-4">
+            <h2 class="text-center">Avisos de Motoristas</h2><img class="landing-icon d-block mx-auto my-4"
+                src="\static\hoursCalc\imagesindex\ticket.svg">
+            <p class="h-25">
+                Apartir do nosso sistema e possivel vizualizar avisos dos onibus, informado sobre algo de importante
+                como rodagem em sabados letivos, comprovantes, objetos perdidos, trocas de onibus em rodagem e etc.
+            
+        </div>
+
+        <div class="col-sm-4">
+            <h2 class="text-center">Visualize Pontos</h2><img class="landing-icon d-block mx-auto my-4"
+                src="\static\hoursCalc\imagesindex\location.svg">
+            <p class="h-25">
+                Não sabe as rotas do seu ônibus? Acompanhe a trajetoria do seu ônibus em nosso site.
+                Sempre saiba onde seu ônibus passará para que você possa estar preparado.
+           
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

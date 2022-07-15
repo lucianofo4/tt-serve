@@ -1,0 +1,154 @@
+{% extends 'hoursCalc/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Diu</h3>
+  </div>
+  <div class="panel-body">
+
+
+    <style>
+      #map {
+        overflow: hidden;
+        width: 600px;
+        height: 150%;
+        border: 2px solid black;
+        padding-bottom: 50%;
+        position: relative;
+        height: 0;
+      }
+
+      #map body {
+        width: 600px;
+        height: 150%;
+        height: 10%;
+        width: 10%;
+        position: absolute;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function initMap() {
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer({
+          // draggable: true
+        });
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: { lat: -14.3017578, lng: -42.694918 },
+        });
+
+
+        directionsRenderer.setMap(map);
+
+        directionsRenderer.addListener('directions_changed', () => {
+          console.log(directionsRenderer);
+        });
+
+        directionsService.route({
+          origin: 'Estádio 2 de Julho, 226, R. Levindo G Leal, 68, Guanambi - BA, 46430-000',
+          destination: 'Caixa Postal Nº 09 Distrito de - Saída p/ ceraíma - n, – Zona Rural, Guanambi - BA, 46430-000, Brasil',
+          waypoints: [
+            {
+              location: 'Parque da Cidade, Av. Pref. José Neves Teixeira - Guanambi, BA, 46430-000',
+              stopover: true
+            },
+            {
+              location: 'Av. Barão do Rio Branco, 1016 - São Francisco, Guanambi - BA, 46430-000',
+              stopover: true
+            },
+{
+              location: 'Av. Barão do Rio Branco, 801 - Guanambi, BA, 46430-000',
+              stopover: true
+            },
+{
+              location: 'R. DR.José Humberto Nunes, 55 - Centro, Guanambi - BA, 46430-000',
+              stopover: true
+            },
+{
+              location: 'Av. Barão do Rio Branco, 121 - Guanambi, BA, 46430-000',
+              stopover: true
+            },
+{
+              location: 'Praça Gercino Coelho, 1 - Guanambi, BA, 46430-000',
+              stopover: true
+            },
+{
+              location: 'R. Dom Pedro II, 41 - Guanambi, BA, 46430-000',
+              stopover: true
+            },
+{
+              location: 'Correios, Guanambi, BA, 46430-000',
+              stopover: true
+            },
+{
+              location: 'R. Simões Filho, 31 - centro, Guanambi - BA, 46430-000',
+              stopover: true
+            },
+{
+              location: 'Av. Joaquim Chaves, 244 - Guanambi, BA, 46430-000',
+              stopover: true
+            }
+
+
+
+          ],
+          travelMode: google.maps.TravelMode.DRIVING
+        }).then(response => {
+          console.log({ response });
+          directionsRenderer.setDirections(response);
+
+
+        }).catch(err => {
+          console.log({ err });
+        });
+
+
+
+
+      }
+    </script>
+    </head>
+
+
+    <body>
+
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div id="map"></div>
+
+        <div id="deu">
+          <a button type="button" class="btn btn-outline-secondary" class="nav-item nav-link" href="{% url 'deu' %}">
+            Motorista
+            Deu</a>
+        </div>
+
+        <div id="jaime">
+          <a button type="button" class="btn btn-outline-secondary" class="nav-item nav-link" href="{% url 'jaime' %}">
+            Motorista
+            Jaime</a>
+        </div>
+
+        <div id="jaime">
+          <a button type="button" class="btn btn-outline-secondary" class="nav-item nav-link"
+            href="{% url 'pequenodiu' %}">
+            Motorista Diuzinho</a>
+        </div>
+
+      </div>
+
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBJq9v0tbMylSJxCLkkSRAchcKcTn-yI4&libraries=places&callback=initMap"
+        async></script>
+
+  </div>
+</div>
+
+</body>
+
+{% endblock content %}
