@@ -25,7 +25,7 @@ SECRET_KEY = '+fq)b#&em0e(kox6x!u)v3$)c$c^^sov34=gk3*9oe0!n@@@j9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://ifbus.herokuapp.com/']
 
 
 # Application definition
