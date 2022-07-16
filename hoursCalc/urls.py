@@ -6,8 +6,8 @@ from django.contrib.auth import views as auth_views
 # app_name = 'rota'
 
 urlpatterns = [
-    path('', shift_views.index, name="index"),
-    path('first/', shift_views.initial_page, name="initial_page"),
+    path('', shift_views.initial_page, name="initial_page"),
+    path('turnos', shift_views.index, name="index"),
     path('submit/', shift_views.submitForm, name='submit'),
     path('select/', shift_views.selectDate, name='select'),
     path('edit/<int:pk>/', shift_views.update_shift, name='edit'),
